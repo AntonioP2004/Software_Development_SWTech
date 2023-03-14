@@ -1,0 +1,117 @@
+import java.util.Scanner;
+
+public class Exercise9_7 {
+	public static void main(String[] args) {
+		Scanner input = new Scanner(System.in);
+		System.out.print("please enter ID: ");
+		int ID = input.nextInt();
+		
+		account account1 = new account();
+		
+			account1.setID(ID);
+			
+			if (ID == 1122) {
+				account1.setBalance(20000);
+				account1.setAnnualInterestRate(4.5);
+			}
+			
+			System.out.print("Account details:"); System.out.println(ID);
+			System.out.println(account1.date.toString());
+			System.out.println("\t\t" + "$" + account1.getBalance());
+			System.out.println("\t\t" + account1.getAnnualInterestRate() + "%");
+		 	System.out.println("1) withdraw");
+		 	System.out.println("2) deposit");
+		 	int option = input.nextInt();
+		 	
+		 	while (option == 1 || option == 2 || (option != 1 && option != 2)) {
+		 		if (option == 1) {
+		 				System.out.println("how much would you like to withdraw?: ");
+		 				account1.setWit(input.nextDouble());
+		 				account1.withdraw();
+		 				System.out.println("\t\tyour new balance is " + "$" + account1.getBalance());
+		 				System.out.println("Monthly interest: " + account1.getMonthlyInterest());
+		 				System.out.println("1) withdraw");
+		 			 	System.out.println("2) deposit");
+		 			 	option = input.nextInt();
+		 		}
+		 		if (option == 2) {
+		 				System.out.println("how much would you like to deposit?: ");
+		 				account1.setDep(input.nextDouble());
+		 				account1.deposit();
+		 				System.out.println("\t\tyour new balance is " + "$" + account1.getBalance());
+		 				System.out.println("Monthly interest: " + account1.getMonthlyInterest());
+		 				System.out.println("1) withdraw");
+		 			 	System.out.println("2) deposit");
+		 			 	option = input.nextInt();
+		 		}
+		 		if (option != 1 && option != 2) {
+		 				System.out.println("Not a valit input");
+		 				System.out.print("Please enter a valid input: ");
+		 				option = input.nextInt();
+		 		}
+		 	}
+	}
+}
+	class account {
+		java.util.Date date = new java.util.Date();
+		private int ID = 0;
+		private double balance = 0;
+		private double annualInterestRate = 0;
+		
+		static double getDep;
+		static double getwit;
+		
+		// these 2 methods get the monthly interest
+		double getMonthlyInterestRate(){
+			double monthlyInterestRate = annualInterestRate / 12;
+			return monthlyInterestRate;
+		}
+		
+		double getMonthlyInterest() {
+			double monthlyInterest = getMonthlyInterestRate() * balance;
+			return monthlyInterest;
+		}
+		
+		// these are the withdraw and deposit methods
+		double withdraw() {
+			balance = balance - getWit();
+			return balance;
+		}
+		
+		double deposit() {
+			balance = balance + getDep();
+			return balance;
+		}
+
+		// all these methods are for the get/set
+		public double getAnnualInterestRate() {
+			return annualInterestRate;
+		}
+		public void setAnnualInterestRate(double annualInterestRate) {
+			this.annualInterestRate = annualInterestRate;
+		}
+		public double getBalance() {
+			return balance;
+		}
+		public void setBalance(double balance) {
+			this.balance = balance;
+		}
+		public int getID() {
+			return ID;
+		}
+		public void setID(int iD) {
+			ID = iD;
+		}
+		public static double getDep() {
+			return getDep;
+		}
+		public static void setDep(double Dep) {
+			account.getDep = Dep;
+		}
+		public static double getWit() {
+			return getwit;
+		}
+		public static void setWit(double Wit) {
+			account.getwit = Wit;
+		}
+	}
