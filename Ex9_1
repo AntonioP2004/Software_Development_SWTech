@@ -1,0 +1,43 @@
+public class Exercise9_1 {
+	public static void main(String[] args) {
+		SympleRectangle rectangle1 = new SympleRectangle();
+			System.out.println("The Height x Width of Rectangle 1 is: " 
+								+ rectangle1.Height + " x " + rectangle1.Width
+								+ " and the area x perimeter is " + rectangle1.Area() + " x " + rectangle1.Perimeter());
+			
+		SympleRectangle rectangle2 = new SympleRectangle();
+			rectangle2.Height = 39.5;
+			rectangle2.Width = 3.5;
+			System.out.println("The Height x Width of Rectangle 2 is: "
+								+ rectangle2.Height + " x " + rectangle2.Width
+								+ " and the area x perimeter is " + rectangle2.Area() + " x " + rectangle2.Perimeter());
+		
+	}
+}
+	class SympleRectangle {
+		double Height;
+		double Width;
+		
+		SympleRectangle() {
+			Height = 40;
+			Width = 4;
+		}
+		
+		SympleRectangle(double newHeight, double newWidth) {
+			Height = newHeight;
+			Width = newWidth;
+		}
+	
+		double Area() {
+			return Height * Width;
+		}
+	
+		double Perimeter() {
+			return (Height*2) + (Width*2);
+		}
+	
+		void setHeightAndWidth(double newHeight, double newWidth) {
+			Height = newHeight;
+			Width = newWidth;
+		}
+	}
